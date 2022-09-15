@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LAB1_KRE17</string>
+    <string name="buttonSolver">РЕШИТЬ</string>string>
+    <string name="buttonClear">ОЧИСТИТЬ</string>string>
+    <string name="textViewOtvet">ОТВЕТ:</string>
+    <string name="editTextAHint">A =</string>
+    <string name="editTextBHint">B =</string>
+    <string name="editTextXHint">X =</string>
+</resources>

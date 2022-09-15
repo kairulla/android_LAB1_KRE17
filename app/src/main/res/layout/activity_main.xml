@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="@string/editTextAHint"
+            android:inputType="numberSigned|numberDecimal"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="@string/editTextBHint"
+            android:inputType="numberSigned|numberDecimal"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="@string/editTextXHint"
+            android:inputType="numberSigned|numberDecimal"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSolver"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickButtonSolver"
+                android:text="@string/buttonSolver"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/buttonClear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickButtonClear"
+                android:text="@string/buttonClear"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewOtvet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewOtvet"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="173dp"
+            app:srcCompat="@drawable/primer17" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
