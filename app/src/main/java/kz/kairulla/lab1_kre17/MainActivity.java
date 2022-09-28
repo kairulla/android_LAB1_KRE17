@@ -1,6 +1,8 @@
 package kz.kairulla.lab1_kre17;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         editTextB = (EditText) findViewById(R.id.editTextB);
         editTextX = (EditText) findViewById(R.id.editTextX);
         textViewOtvet = (TextView) findViewById(R.id.textViewOtvet);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // залочил ориентацию
     }
 
     public void onClickButtonSolver(View view) {
