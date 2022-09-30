@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         editTextB = (EditText) findViewById(R.id.editTextB);
         editTextX = (EditText) findViewById(R.id.editTextX);
         textViewOtvet = (TextView) findViewById(R.id.textViewOtvet);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // залочил ориентацию
+//        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // залочил ориентацию
     }
 
     public void onClickButtonSolver(View view) {
