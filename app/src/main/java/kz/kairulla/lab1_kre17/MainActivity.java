@@ -3,6 +3,7 @@ package kz.kairulla.lab1_kre17;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -10,11 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextA, editTextB, editTextX;
     TextView textViewOtvet;
     Button buttonSolver, buttonClear;
+    View.OnKeyListener myKeyListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 //        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // залочил ориентацию
 
         // Собственный обработчик нажатий на клавиши
-        View.OnKeyListener myKeyListener = new View.OnKeyListener() {
+        myKeyListener = new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // Проверка условия: если пусто в "a" или "b"
@@ -48,12 +53,36 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        buttonSolver.setEnabled(false); // Выключаем доступность нажатия у кнопки
-        buttonClear.setEnabled(false);
+        if (savedInstanceState != null) {
+            editTextA.setText(savedInstanceState.getString("A"));
+            editTextB.setText(savedInstanceState.getString("B"));
+            editTextX.setText(savedInstanceState.getString("X"));
+            textViewOtvet.setText(savedInstanceState.getString("Otvet"));
+            buttonSolver.setEnabled(savedInstanceState.getBoolean("myButtonSolver"));
+            buttonClear.setEnabled(savedInstanceState.getBoolean("myButtonClear"));
+        } else {
+            buttonSolver.setEnabled(false); // Выключаем доступность нажатия у кнопки
+            buttonClear.setEnabled(false); // Выключаем доступность нажатия у кнопки
+        }
+
+
         editTextA.setOnKeyListener(myKeyListener); // Добавляем к компоненту свой обработчик нажатий
         editTextB.setOnKeyListener(myKeyListener); // Добавляем к компоненту свой обработчик нажатий
         editTextX.setOnKeyListener(myKeyListener); // Добавляем к компоненту свой обработчик нажатий
     }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("A", editTextA.getText().toString());
+        outState.putString("B", editTextB.getText().toString());
+        outState.putString("X", editTextX.getText().toString());
+        outState.putString("Otvet", textViewOtvet.getText().toString());
+        outState.putBoolean("myButtonSolver", buttonSolver.isEnabled());
+        outState.putBoolean("myButtonClear", buttonClear.isEnabled());
+    }
+
+
 
     public void onClickButtonSolver(View view) {
         double a = 0, b = 0, x = 0, y = 0;
