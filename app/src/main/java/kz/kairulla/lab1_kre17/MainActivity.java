@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         myKeyListener = new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // Проверка условия: если пусто в "a" или "b"
+                // она сохраняет содержимое при перевороте
                 if (
                         editTextA.getText().toString().trim().equals("") ||
                         editTextB.getText().toString().trim().equals("") ||
@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
         };
 
         if (savedInstanceState != null) {
-            editTextA.setText(savedInstanceState.getString("A"));
-            editTextB.setText(savedInstanceState.getString("B"));
-            editTextX.setText(savedInstanceState.getString("X"));
             textViewOtvet.setText(savedInstanceState.getString("Otvet"));
             buttonSolver.setEnabled(savedInstanceState.getBoolean("myButtonSolver"));
             buttonClear.setEnabled(savedInstanceState.getBoolean("myButtonClear"));
@@ -65,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             buttonClear.setEnabled(false); // Выключаем доступность нажатия у кнопки
         }
 
-
         editTextA.setOnKeyListener(myKeyListener); // Добавляем к компоненту свой обработчик нажатий
         editTextB.setOnKeyListener(myKeyListener); // Добавляем к компоненту свой обработчик нажатий
         editTextX.setOnKeyListener(myKeyListener); // Добавляем к компоненту свой обработчик нажатий
@@ -73,38 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        outState.putString("A", editTextA.getText().toString());
-        outState.putString("B", editTextB.getText().toString());
-        outState.putString("X", editTextX.getText().toString());
         outState.putString("Otvet", textViewOtvet.getText().toString());
-        outState.putBoolean("myButtonSolver", buttonSolver.isEnabled());
-        outState.putBoolean("myButtonClear", buttonClear.isEnabled());
+        outState.putBoolean("myButtonSolver", buttonSolver.isEnabled()); // сохранение состояния кнопки
+        outState.putBoolean("myButtonClear", buttonClear.isEnabled()); // сохранение состояния кнопки
     }
-
 
 
     public void onClickButtonSolver(View view) {
         double a = 0, b = 0, x = 0, y = 0;
-        /*String[] editTextEmptyTest = new String[] {
-                editTextA.getText().toString(), editTextB.getText().toString(), editTextX.getText().toString()
-        };
-
-        for (int i = 0; i < 3; i++) {
-            if (TextUtils.isEmpty(editTextEmptyTest[i])) {
-                switch (i) {
-                    case (0):
-                        editTextA.setError("пусто");
-                        break;
-                    case (1):
-                        editTextB.setError("пусто");
-                        break;
-                    case (2):
-                        editTextX.setError("пусто");
-                        break;
-                }
-            }
-        }*/
 
         try {
             a = Double.parseDouble(editTextA.getText().toString().trim());
@@ -121,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
     }
 
     public void onClickButtonClear(View view) {
